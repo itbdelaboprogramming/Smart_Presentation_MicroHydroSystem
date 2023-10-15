@@ -11,7 +11,7 @@ import {
 
 // ----------------------------------- SCENE BACKGROUND COLOR -----------------------------------
 export const scene = new THREE.Scene();
-scene.background = new THREE.Color(0xdbe9e9);
+scene.background = new THREE.Color(0xffffff);
 
 // ------------------------------------------- CAMERA -------------------------------------------
 export const camera = new THREE.PerspectiveCamera(
@@ -24,8 +24,8 @@ camera.layers.enableAll();
 // ----------------------------------------- GRID HELPER ----------------------------------------
 const size = 50;
 const divisions = 50;
-const colorCenterLine = 0xffffff;
-const colorGrid = 0xffffff;
+const colorCenterLine = 0x000000;
+const colorGrid = 0x000000;
 
 const grid = new THREE.GridHelper(size, divisions, colorCenterLine, colorGrid);
 grid.position.y = -1;

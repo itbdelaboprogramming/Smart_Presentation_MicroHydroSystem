@@ -4,13 +4,7 @@
         <title>Smart Presentation</title>
         <!-- <link rel="icon" type="image/x-icon" href="assets/SR_logo_03_red.png"> -->
         <meta charset="UTF-8">
-        <!-- <script type="importmap">
-            {
-                "imports": {
-                "three": "https://unpkg.com/three@0.153.0/build/three.module.js"
-                }
-            } 
-        </script> -->
+
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.2.4/dist/gsap.js"></script>
         <link rel="stylesheet" href="./style/style.css" >
         <script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
