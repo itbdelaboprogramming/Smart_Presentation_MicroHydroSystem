@@ -22,6 +22,10 @@
         <div class="home-page">
             <canvas id="myCanvas">    </canvas>
 
+            <div class="container-left-middle">
+                <h2>Working Tree</h2>
+                
+            </div>
 
             <div class="loadingScreenContainer" style="display: none">
                 <label for="loadingBar" id='loadingBarLabel'> Loading... </label>

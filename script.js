@@ -11,14 +11,14 @@ import {
 
 // ----------------------------------- SCENE BACKGROUND COLOR -----------------------------------
 export const scene = new THREE.Scene();
-scene.background = new THREE.Color(0xffffff);
+scene.background = new THREE.Color(0x283148);
 
 // ------------------------------------------- CAMERA -------------------------------------------
 export const camera = new THREE.PerspectiveCamera(
 	45,
 	myCanvas.offsetWidth / myCanvas.offsetHeight
 );
-camera.position.set(6, 4, -4);
+camera.position.set(5, 3, -3);
 camera.layers.enableAll();
 
 // ----------------------------------------- GRID HELPER ----------------------------------------
@@ -83,7 +83,7 @@ light4.name = "light4";
 light4.position.set(0, -r, 0);
 scene.add(light4);
 
-// --------------------------- LIGHTNING DEFAULT: CENTER BELOW CENTER ---------------------------
+// ----------------=-------------------------- RENDERER ------------------=----------------------
 const renderer = new THREE.WebGLRenderer({ canvas: myCanvas });
 renderer.setClearColor(0xff0000, 1.0);
 renderer.setPixelRatio(window.devicePixelRatio);
