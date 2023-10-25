@@ -19,7 +19,6 @@ export const camera = new THREE.PerspectiveCamera(
 	myCanvas.offsetWidth / myCanvas.offsetHeight
 );
 camera.position.set(5, 3, -3);
-camera.layers.enableAll();
 
 // ----------------------------------------- GRID HELPER ----------------------------------------
 const size = 50;
@@ -126,14 +125,17 @@ export const loader = new GLTFLoader(loadingManager);
 loader.name = "loader";
 
 let path = "files/" + "MSD700_ブレードモデル_MCLA15A.glb";
+// let path = "files/" + "VSI Gyropactor.glb";
+let file3D;
 
 loader.load(
 	path,
 	function (gltf) {
-		let file3D = gltf.scene;
+		file3D = gltf.scene;
 		file3D.name = "file3D";
 		scene.add(file3D);
-		file3D.layers.enableAll();
+
+		workingTree(file3D);
 
 		file3D.position.set(0, -0.95, 0);
 	},
@@ -163,3 +165,23 @@ window.addEventListener("resize", () => {
 	camera.updateProjectionMatrix();
 	labelRenderer.setSize(window.innerWidth - 0.5, window.innerHeight - 0.5);
 });
+
+// ------------------------------------------- CREATE WORKING TREE -------------------------------------------
+const parts_container = document.querySelector(".parts-container");
+function workingTree(file3D) {
+	console.log(file3D);
+
+	let object_children = file3D.children;
+	let parent = object_children[0].parent;
+	let out = "";
+
+	object_children.forEach((child) => {
+		out += `
+					<p>${child.name}</p>
+				`;
+		// if (child.parent != parent) {
+		// 	console.log(child);
+		// }
+	});
+	parts_container.innerHTML = out;
+}

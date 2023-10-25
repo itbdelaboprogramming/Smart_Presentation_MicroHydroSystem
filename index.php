@@ -24,7 +24,9 @@
 
             <div class="container-left-middle">
                 <h2>Working Tree</h2>
-                
+                <div class="parts-container">
+                    
+                </div>
             </div>
 
             <div class="loadingScreenContainer" style="display: none">
@@ -33,6 +35,7 @@
             </div>
 
             <script type="module" src="script.js"> </script>
+            <!-- <script type="module" src="./js/home.js"></script> -->
         </div>
     </body>
 </html>

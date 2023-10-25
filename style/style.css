@@ -185,3 +185,26 @@ canvas {
 	font-weight: 700;
 	line-height: normal;
 }
+
+.parts-container {
+	height: 90%;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	text-overflow: ellipsis;
+
+	padding: 0px 10px 0px 10px;
+}
+
+.parts-container > p {
+	color: var(--text-color-office-50, #475b74);
+	text-align: justify;
+
+	font-family: Ubuntu;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+
+	overflow-x: hidden;
+	text-overflow: ellipsis;
+}
