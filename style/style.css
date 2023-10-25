@@ -131,7 +131,7 @@ canvas {
 
 	flex-direction: column;
 	justify-content: flex-start;
-	padding: 12px 16px 12px 16px;
+	padding: 12px 0px 12px 16px;
 	gap: 5px;
 
 	/* width: 250px; */
@@ -184,6 +184,8 @@ canvas {
 	font-style: normal;
 	font-weight: 700;
 	line-height: normal;
+
+	padding: 0px 16px 0px 0px;
 }
 
 .parts-container {
