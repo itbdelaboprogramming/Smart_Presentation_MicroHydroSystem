@@ -124,7 +124,8 @@ loadingManager.onLoad = function () {
 export const loader = new GLTFLoader(loadingManager);
 loader.name = "loader";
 
-let path = "files/" + "MSD700_ブレードモデル_MCLA15A.glb";
+let path = "files/" + "MSD700_bucket_MCLA007A_00.glb";
+// let path = "files/" + "MSD700_ブレードモデル_MCLA15A.glb";
 // let path = "files/" + "VSI Gyropactor.glb";
 let file3D;
 
@@ -169,19 +170,28 @@ window.addEventListener("resize", () => {
 // ------------------------------------------- CREATE WORKING TREE -------------------------------------------
 const parts_container = document.querySelector(".parts-container");
 function workingTree(file3D) {
-	console.log(file3D);
-
 	let object_children = file3D.children;
-	let parent = object_children[0].parent;
 	let out = "";
 
 	object_children.forEach((child) => {
-		out += `
-					<p>${child.name}</p>
-				`;
-		// if (child.parent != parent) {
-		// 	console.log(child);
-		// }
+		out = writeParts(child, out, 0);
 	});
+
 	parts_container.innerHTML = out;
+}
+
+function writeParts(part, out, iteration) {
+	let whiteSpace = "&nbsp;".repeat(5 * iteration);
+
+	if (part.children.length > 0) {
+		out += `<div> <p>${whiteSpace} ${part.name} </p></div>`;
+
+		part.children.forEach((child) => {
+			out = writeParts(child, out, iteration + 1);
+		});
+	} else {
+		out += `<div> <p> ${whiteSpace} ${part.name} </p> </div>`;
+	}
+
+	return out;
 }

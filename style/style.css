@@ -195,9 +195,41 @@ canvas {
 	text-overflow: ellipsis;
 
 	padding: 0px 10px 0px 10px;
+
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
 }
 
-.parts-container > p {
+.parts-container > div {
+	display: flex;
+	flex-direction: row;
+
+	font-family: Ubuntu;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.parts-container > div > p {
+	padding: 0px;
+	margin: 0px;
+
+	color: var(--text-color-office-50, #475b74);
+
+	font-family: Ubuntu;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+
+	white-space: nowrap;
+	overflow-x: hidden;
+	text-overflow: ellipsis;
+}
+
+/* .parts-container > p {
 	color: var(--text-color-office-50, #475b74);
 	text-align: justify;
 
@@ -207,6 +239,10 @@ canvas {
 	font-weight: 400;
 	line-height: normal;
 
+	width: 100%;
 	overflow-x: hidden;
 	text-overflow: ellipsis;
-}
+
+	padding: 0px;
+	margin: 0px;
+} */
