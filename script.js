@@ -124,6 +124,7 @@ loadingManager.onLoad = function () {
 export const loader = new GLTFLoader(loadingManager);
 loader.name = "loader";
 
+// let path = "files/" + "Hokkaido Crushing Plant - Compressed.glb";
 let path = "files/" + "MSD700_bucket_MCLA007A_00.glb";
 // let path = "files/" + "MSD700_ブレードモデル_MCLA15A.glb";
 // let path = "files/" + "VSI Gyropactor.glb";
@@ -175,6 +176,10 @@ function workingTree(file3D) {
 
 	object_children.forEach((child) => {
 		out = writeParts(child, out, 0);
+
+		if (child.name == "MCLA004A") {
+			child.visible = false;
+		}
 	});
 
 	parts_container.innerHTML = out;
