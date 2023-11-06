@@ -4,6 +4,7 @@ const myCanvas = document.querySelector("#myCanvas");
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { DRACOLoader } from "three/addons/loaders/DRACOLoader.js";
 import {
 	CSS2DRenderer,
 	CSS2DObject,
@@ -122,10 +123,14 @@ loadingManager.onLoad = function () {
 };
 
 export const loader = new GLTFLoader(loadingManager);
+// export const loader = new DRACOLoader();
 loader.name = "loader";
 
+// let path = "files/" + "testing14.glb";
 // let path = "files/" + "Hokkaido Crushing Plant - Compressed.glb";
-let path = "files/" + "MSD700_bucket_MCLA007A_00.glb";
+// let path = "files/" + "MSD700_bucket_MCLA007A_00.glb";
+let path = "files/" + "Microhydro System 2.glb";
+// let path = "files/" + "Hokkaido Crushing Plant.glb";
 // let path = "files/" + "MSD700_ブレードモデル_MCLA15A.glb";
 // let path = "files/" + "VSI Gyropactor.glb";
 let file3D;
@@ -172,14 +177,14 @@ window.addEventListener("resize", () => {
 const parts_container = document.querySelector(".parts-container");
 function workingTree(file3D) {
 	let object_children = file3D.children;
+	console.log(object_children);
 	let out = "";
 
 	object_children.forEach((child) => {
 		out = writeParts(child, out, 0);
-
-		if (child.name == "MCLA004A") {
-			child.visible = false;
-		}
+		// if (child.name == "MCLA004A") {
+		// 	child.visible = false;
+		// }
 	});
 
 	parts_container.innerHTML = out;
@@ -187,16 +192,46 @@ function workingTree(file3D) {
 
 function writeParts(part, out, iteration) {
 	let whiteSpace = "&nbsp;".repeat(5 * iteration);
+	let indent = iteration * 20;
 
 	if (part.children.length > 0) {
-		out += `<div> <p>${whiteSpace} ${part.name} </p></div>`;
-
+		out += `<div style="margin-left:${indent}px;"> <img src="./assets/right-arrow.png"/> <p class="konten"> ${part.name} </p> </div>`;
+		// out += `<div> <p>${whiteSpace} <img src="./assets/right-arrow.png"/> ${part.name} </p> </div>`;
 		part.children.forEach((child) => {
 			out = writeParts(child, out, iteration + 1);
 		});
 	} else {
-		out += `<div> <p> ${whiteSpace} ${part.name} </p> </div>`;
+		out += `<div style="margin-left:${indent}px;"> <p class="konten"> ${part.name} </p> </div>`;
+		// out += `<div> <p> ${whiteSpace} ${part.name} </p> </div>`;
 	}
 
 	return out;
 }
+
+const parts_container_content = document.querySelectorAll(".parts-container");
+// console.log(parts_container_content);
+const konten = document.querySelectorAll(".konten");
+console.log(konten);
+konten.forEach((kontenS) => {
+	console.log(kontenS);
+});
+
+// for (ten of konten) {
+// 	console.log("aaaa");
+// 	console.log(ten);
+// }
+
+// konten.forEach((kontenS) => {
+// 	console.log(kontenS);
+// });
+
+parts_container_content.forEach((content) => {
+	console.log(content);
+	content.addEventListener("click", (e) => {
+		let partName = e.target.textContent.trim();
+		let part = scene.getObjectByName(partName);
+		if (part) {
+			part.visible = !part.visible;
+		}
+	});
+});
