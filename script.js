@@ -126,7 +126,7 @@ export const loader = new GLTFLoader(loadingManager);
 // export const loader = new DRACOLoader();
 loader.name = "loader";
 
-// let path = "files/" + "testing14.glb";
+// let path = "files/" + "testing12.glb";
 // let path = "files/" + "Hokkaido Crushing Plant - Compressed.glb";
 // let path = "files/" + "MSD700_bucket_MCLA007A_00.glb";
 let path = "files/" + "Microhydro System 2.glb";
@@ -177,61 +177,61 @@ window.addEventListener("resize", () => {
 const parts_container = document.querySelector(".parts-container");
 function workingTree(file3D) {
 	let object_children = file3D.children;
-	console.log(object_children);
+
 	let out = "";
 
 	object_children.forEach((child) => {
 		out = writeParts(child, out, 0);
-		// if (child.name == "MCLA004A") {
+		// if (child.name == "20230202_北陸Insuline_2") {
 		// 	child.visible = false;
+		// }
+		// let part = scene.getObjectByName("20230202_北陸Insuline_2");
+		// if (part) {
+		// 	part.visible = false;
 		// }
 	});
 
 	parts_container.innerHTML = out;
+	updateKonten();
 }
 
 function writeParts(part, out, iteration) {
-	let whiteSpace = "&nbsp;".repeat(5 * iteration);
+	// let whiteSpace = "&nbsp;".repeat(5 * iteration);
 	let indent = iteration * 20;
 
 	if (part.children.length > 0) {
-		out += `<div style="margin-left:${indent}px;"> <img src="./assets/right-arrow.png"/> <p class="konten"> ${part.name} </p> </div>`;
+		out += `<div  style="margin-left:${indent}px;"> <img src="./assets/right-arrow.png"/> <p class="konten-page" > ${part.name} </p> </div>`;
 		// out += `<div> <p>${whiteSpace} <img src="./assets/right-arrow.png"/> ${part.name} </p> </div>`;
 		part.children.forEach((child) => {
 			out = writeParts(child, out, iteration + 1);
 		});
 	} else {
-		out += `<div style="margin-left:${indent}px;"> <p class="konten"> ${part.name} </p> </div>`;
+		out += `<div style="margin-left:${indent}px;"> <p   class="konten-page"> ${part.name} </p> </div>`;
 		// out += `<div> <p> ${whiteSpace} ${part.name} </p> </div>`;
 	}
 
 	return out;
 }
 
-const parts_container_content = document.querySelectorAll(".parts-container");
-// console.log(parts_container_content);
-const konten = document.querySelectorAll(".konten");
-console.log(konten);
-konten.forEach((kontenS) => {
-	console.log(kontenS);
-});
+//  Wall_2
 
-// for (ten of konten) {
-// 	console.log("aaaa");
-// 	console.log(ten);
-// }
+function updateKonten() {
+	const parts_container_content = document.querySelectorAll(".konten-page");
+	console.log(parts_container_content);
+	parts_container_content.forEach((content) => {
+		content.addEventListener("click", (e) => {
+			console.log(content);
+			let partName = e.target.textContent.trim();
 
-// konten.forEach((kontenS) => {
-// 	console.log(kontenS);
-// });
-
-parts_container_content.forEach((content) => {
-	console.log(content);
-	content.addEventListener("click", (e) => {
-		let partName = e.target.textContent.trim();
-		let part = scene.getObjectByName(partName);
-		if (part) {
-			part.visible = !part.visible;
-		}
+			// console.log(partName);
+			let part = scene.getObjectByName(partName);
+			if (part) {
+				part.visible = !part.visible;
+			}
+		});
 	});
-});
+}
+
+// const kontenn = document.getElementsByClassName("konten");
+
+// kontenn[0].style.backgroundColor = "red";
