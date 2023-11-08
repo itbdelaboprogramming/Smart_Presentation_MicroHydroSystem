@@ -185,10 +185,14 @@ function workingTree(file3D) {
 		// if (child.name == "20230202_北陸Insuline_2") {
 		// 	child.visible = false;
 		// }
-		// let part = scene.getObjectByName("20230202_北陸Insuline_2");
-		// if (part) {
-		// 	part.visible = false;
-		// }
+		let part = scene.getObjectByName("20230202_北陸Wall_2");
+		if (part) {
+			part.visible = false;
+		}
+		part = scene.getObjectByName("20230202_北陸Insuline_Wall");
+		if (part) {
+			part.visible = false;
+		}
 	});
 
 	parts_container.innerHTML = out;
@@ -201,13 +205,11 @@ function writeParts(part, out, iteration) {
 
 	if (part.children.length > 0) {
 		out += `<div  style="margin-left:${indent}px;"> <img src="./assets/right-arrow.png"/> <p class="konten-page" > ${part.name} </p> </div>`;
-		// out += `<div> <p>${whiteSpace} <img src="./assets/right-arrow.png"/> ${part.name} </p> </div>`;
 		part.children.forEach((child) => {
 			out = writeParts(child, out, iteration + 1);
 		});
 	} else {
 		out += `<div style="margin-left:${indent}px;"> <p   class="konten-page"> ${part.name} </p> </div>`;
-		// out += `<div> <p> ${whiteSpace} ${part.name} </p> </div>`;
 	}
 
 	return out;
@@ -217,13 +219,12 @@ function writeParts(part, out, iteration) {
 
 function updateKonten() {
 	const parts_container_content = document.querySelectorAll(".konten-page");
-	console.log(parts_container_content);
+
 	parts_container_content.forEach((content) => {
 		content.addEventListener("click", (e) => {
 			console.log(content);
 			let partName = e.target.textContent.trim();
 
-			// console.log(partName);
 			let part = scene.getObjectByName(partName);
 			if (part) {
 				part.visible = !part.visible;
@@ -231,7 +232,3 @@ function updateKonten() {
 		});
 	});
 }
-
-// const kontenn = document.getElementsByClassName("konten");
-
-// kontenn[0].style.backgroundColor = "red";

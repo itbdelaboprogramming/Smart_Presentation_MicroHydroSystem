@@ -230,9 +230,9 @@ canvas {
 	overflow-x: hidden;
 	text-overflow: ellipsis;
 
-	user-select: none;
+	/* user-select: none; */
 }
-.parts-container > div > p > img {
+.parts-container > div > img {
 	height: 8px;
 }
 
