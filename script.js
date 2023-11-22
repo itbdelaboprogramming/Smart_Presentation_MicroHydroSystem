@@ -210,6 +210,7 @@ function writeParts(part, out, iteration) {
 		});
 	} else {
 		out += `<div style="margin-left:${indent}px;"> <p   class="konten-page"> ${part.name} </p> </div>`;
+		
 	}
 
 	return out;
@@ -222,7 +223,7 @@ function updateKonten() {
 
 	parts_container_content.forEach((content) => {
 		content.addEventListener("click", (e) => {
-			console.log(content);
+			// console.log(content);
 			let partName = e.target.textContent.trim();
 
 			let part = scene.getObjectByName(partName);
